@@ -42,9 +42,14 @@ app.get('/', (req, res) => {
 
 
 import librosRouter from './routes/libro.route';
+import autorRouter from './routes/autor.route';
+import generosRouter from './routes/generos.route';
+
+
 
 app.use('/api', librosRouter);
-
+app.use('/api', autorRouter);
+app.use('/api', generosRouter);
 
 //exportando el app
 module.exports = app;
