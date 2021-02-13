@@ -39,9 +39,27 @@ const addLibro = async(req, res) => {
 };
 
 
+const editLibro = async(req, res) => {
+    let id = req.params.id;
+    const upData = await LibrosShema.findByIdAndUpdate(id, req.body, {
+        new: true
+    });
+
+    res.status(200).json(upData);
+}
+
+const deleteLibro = async(req, res) => {
+    let id = req.params.id;
+    const deleteData = await LibrosShema.findByIdAndDelete(id);
+    res.status(200).json(deleteData);
+}
+
+
 
 module.exports = {
     getLibros,
     getLibro,
-    addLibro
+    addLibro,
+    editLibro,
+    deleteLibro
 }

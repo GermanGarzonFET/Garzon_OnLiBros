@@ -13,8 +13,8 @@ router.get('/libros/:id', libroController.getLibro);
 router.post('/libros', libroController.addLibro);
 
 //editar
-
+router.put('/libros/:id', libroController.editLibro);
 //eliminar
-
+router.delete('/libros/:id', libroController.deleteLibro);
 
 export default router;
