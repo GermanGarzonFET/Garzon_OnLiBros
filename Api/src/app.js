@@ -44,12 +44,24 @@ app.get('/', (req, res) => {
 import librosRouter from './routes/libro.route';
 import autorRouter from './routes/autor.route';
 import generosRouter from './routes/generos.route';
+import comentariosRouter from './routes/comentarios.route';
+import usuariosRouter from './routes/usuarios.route';
+import loginController from './routes/login.route';
+
 
 
 
 app.use('/api', librosRouter);
 app.use('/api', autorRouter);
 app.use('/api', generosRouter);
+app.use('/api', comentariosRouter);
+app.use('/api', usuariosRouter);
+app.use('/api', loginController);
+
+
+//libs
+import { createRoles } from './libs/onInit';
+createRoles();
 
 //exportando el app
 module.exports = app;

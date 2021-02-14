@@ -25,15 +25,15 @@ const getLibro = async(req, res) => {
 };
 
 const addLibro = async(req, res) => {
-    let { titulo, autor, genero, edicion, img, descripcion, comentarios, pdf } = req.body;
+    let { titulo, id_autor, id_genero, edicion, img, descripcion, id_comentarios, pdf } = req.body;
     const newLibro = new LibrosShema({
         titulo,
-        autor,
-        genero,
+        id_autor,
+        id_genero,
         edicion,
         img,
         descripcion,
-        comentarios,
+        id_comentarios,
         pdf
     })
     const saveLibro = await newLibro.save();
