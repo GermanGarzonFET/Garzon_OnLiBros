@@ -78,19 +78,21 @@ var getLibro = /*#__PURE__*/function () {
 
 var addLibro = /*#__PURE__*/function () {
   var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(req, res) {
-    var _req$body, titulo, autor, img, descripcion, comentarios, pdf, newLibro, saveLibro;
+    var _req$body, titulo, id_autor, id_genero, edicion, img, descripcion, id_comentarios, pdf, newLibro, saveLibro;
 
     return regeneratorRuntime.wrap(function _callee3$(_context3) {
       while (1) {
         switch (_context3.prev = _context3.next) {
           case 0:
-            _req$body = req.body, titulo = _req$body.titulo, autor = _req$body.autor, img = _req$body.img, descripcion = _req$body.descripcion, comentarios = _req$body.comentarios, pdf = _req$body.pdf;
+            _req$body = req.body, titulo = _req$body.titulo, id_autor = _req$body.id_autor, id_genero = _req$body.id_genero, edicion = _req$body.edicion, img = _req$body.img, descripcion = _req$body.descripcion, id_comentarios = _req$body.id_comentarios, pdf = _req$body.pdf;
             newLibro = new _libro["default"]({
               titulo: titulo,
-              autor: autor,
+              id_autor: id_autor,
+              id_genero: id_genero,
+              edicion: edicion,
               img: img,
               descripcion: descripcion,
-              comentarios: comentarios,
+              id_comentarios: id_comentarios,
               pdf: pdf
             });
             _context3.next = 4;
@@ -113,8 +115,69 @@ var addLibro = /*#__PURE__*/function () {
   };
 }();
 
+var editLibro = /*#__PURE__*/function () {
+  var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(req, res) {
+    var id, upData;
+    return regeneratorRuntime.wrap(function _callee4$(_context4) {
+      while (1) {
+        switch (_context4.prev = _context4.next) {
+          case 0:
+            id = req.params.id;
+            _context4.next = 3;
+            return _libro["default"].findByIdAndUpdate(id, req.body, {
+              "new": true
+            });
+
+          case 3:
+            upData = _context4.sent;
+            res.status(200).json(upData);
+
+          case 5:
+          case "end":
+            return _context4.stop();
+        }
+      }
+    }, _callee4);
+  }));
+
+  return function editLibro(_x7, _x8) {
+    return _ref4.apply(this, arguments);
+  };
+}();
+
+var deleteLibro = /*#__PURE__*/function () {
+  var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(req, res) {
+    var id;
+    return regeneratorRuntime.wrap(function _callee5$(_context5) {
+      while (1) {
+        switch (_context5.prev = _context5.next) {
+          case 0:
+            id = req.params.id;
+            _context5.next = 3;
+            return _libro["default"].findByIdAndDelete(id);
+
+          case 3:
+            res.status(200).json({
+              message: "ok"
+            });
+
+          case 4:
+          case "end":
+            return _context5.stop();
+        }
+      }
+    }, _callee5);
+  }));
+
+  return function deleteLibro(_x9, _x10) {
+    return _ref5.apply(this, arguments);
+  };
+}();
+
 module.exports = {
   getLibros: getLibros,
   getLibro: getLibro,
-  addLibro: addLibro
+  addLibro: addLibro,
+  editLibro: editLibro,
+  deleteLibro: deleteLibro
 };

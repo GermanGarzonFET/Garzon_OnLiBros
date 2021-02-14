@@ -12,6 +12,18 @@ var _package = _interopRequireDefault(require("../package.json"));
 
 var _libro = _interopRequireDefault(require("./routes/libro.route"));
 
+var _autor = _interopRequireDefault(require("./routes/autor.route"));
+
+var _generos = _interopRequireDefault(require("./routes/generos.route"));
+
+var _comentarios = _interopRequireDefault(require("./routes/comentarios.route"));
+
+var _usuarios = _interopRequireDefault(require("./routes/usuarios.route"));
+
+var _login = _interopRequireDefault(require("./routes/login.route"));
+
+var _onInit = require("./libs/onInit");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 //importaciones de las librerias
@@ -44,6 +56,13 @@ app.get('/', function (req, res) {
     }
   });
 });
-app.use('/api', _libro["default"]); //exportando el app
+app.use('/api', _libro["default"]);
+app.use('/api', _autor["default"]);
+app.use('/api', _generos["default"]);
+app.use('/api', _comentarios["default"]);
+app.use('/api', _usuarios["default"]);
+app.use('/api', _login["default"]); //libs
+
+(0, _onInit.createRoles)(); //exportando el app
 
 module.exports = app;

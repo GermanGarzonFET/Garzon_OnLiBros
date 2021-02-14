@@ -10,5 +10,5 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 //inicando el servidor
 _app["default"].listen(_config["default"].port, function () {
-  console.log("server on http:\\localhost:".concat(_config["default"].port));
+  console.log("server http://localhost:".concat(_config["default"].port, "/"));
 });
