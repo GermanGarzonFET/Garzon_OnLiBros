@@ -52,8 +52,8 @@ const editLibro = async(req, res) => {
 
 const deleteLibro = async(req, res) => {
     let id = req.params.id;
-    const deleteData = await LibrosShema.findByIdAndDelete(id);
-    res.status(200).json(deleteData);
+    await LibrosShema.findByIdAndDelete(id);
+    res.status(200).json({ message: "ok" });
 }
 
 
