@@ -2,7 +2,6 @@ import LibrosShema from '../models/libro.model';
 
 const getLibros = async(req, res) => {
     const data = await LibrosShema.find();
-    console.log(data);
     res.status(200).json(data);
 
 };
@@ -19,7 +18,6 @@ const getLibro = async(req, res) => {
                 return data
             }
         }); */
-    console.log(data);
     res.status(200).json(data);
 
 };

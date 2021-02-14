@@ -63,7 +63,12 @@ export const isModerator = async(req, res, next) => {
 export const verifyLibro = async(req, res, next) => {
     try {
         const idLibro = req.params.id;
-        await LibroSchema.findById(idLibro);
+
+        const dataLibro = await LibroSchema.findById(idLibro);
+        if (dataLibro == null) {
+            return res.status(400).json({ message: "El libro no existe" });
+
+        }
         next();
 
     } catch (error) {
