@@ -14,7 +14,7 @@ router.get('/libros/:id', verifyLibro, libroController.getLibro);
 router.post('/libros', [verifyToken, isAdmin], libroController.addLibro);
 
 //editar
-router.put('/libros/:id', [verifyToken, isModerator, verifyLibro], libroController.editLibro);
+router.put('/libros/:id', [verifyToken, verifyLibro, isModerator], libroController.editLibro);
 //eliminar
 router.delete('/libros/:id', [verifyToken, verifyLibro, isAdmin], libroController.deleteLibro);
 
