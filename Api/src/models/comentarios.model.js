@@ -5,7 +5,8 @@ const comentariosSchema = new Schema({
 
     contenido: String,
     id_usuario: [{
-        type: String
+        ref: "Usuarios",
+        type: Schema.Types.ObjectId
     }]
 
 

@@ -13,7 +13,10 @@ const librosShema = new Schema({
     edicion: String,
     img: String,
     descripcion: String,
-    id_comentarios: [{ type: String }], //es una array pero todabia no la uso falta el modelo de comentarios
+    id_comentarios: [{ //es una array pero todabia no la uso falta el modelo de comentarios
+        ref: "Comentarios",
+        type: Schema.Types.ObjectId
+    }],
     pdf: String // mientras colocare el link mientras configuro para que suba archivos
 
 }, {

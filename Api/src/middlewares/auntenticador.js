@@ -3,6 +3,8 @@ import conf from '../config';
 import UsuariosSchema from '../models/usuarios.model';
 import RolesSchema from '../models/roles.model';
 import LibroSchema from '../models/libro.model';
+import ComentariosSchema from '../models/comentarios.model';
+
 
 
 export const verifyToken = async(req, res, next) => {
@@ -74,5 +76,17 @@ export const verifyLibro = async(req, res, next) => {
     } catch (error) {
         return res.status(400).json({ message: "El libro no existe" });
 
+    }
+};
+
+export const verifyUserComent = async(req, res, next) => {
+    const id_comentario = req.params.id;
+    console.log(req.userId);
+    const dataComentario = await ComentariosSchema.findById(id_comentario);
+    console.log(dataComentario.id_usuario);
+    if (dataComentario.id_usuario == req.userId) {
+        next();
+    } else {
+        res.status(400).json({ message: 'no es el usuario' });
     }
 };

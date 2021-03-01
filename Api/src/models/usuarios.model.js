@@ -18,7 +18,20 @@ const UsuariosSchema = new Schema({
     roles: [{ //aqui van los rolres que tenga (admin,moderador,usuario etc)
         ref: "Roles",
         type: Schema.Types.ObjectId
-    }]
+    }],
+    id_favoritos: {
+        ref: "Favoritos",
+        type: Schema.Types.ObjectId
+    },
+    id_leidos: {
+        ref: "Leidos",
+        type: Schema.Types.ObjectId
+    },
+    id_leerDespues: {
+        ref: "LeerDespues",
+        type: Schema.Types.ObjectId
+    },
+
 }, {
     timestamps: true
 });

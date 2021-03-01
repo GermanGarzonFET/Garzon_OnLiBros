@@ -1,19 +1,20 @@
 import { Router } from 'express';
 import usuariosController from '../controllers/usuarios.controller';
+import { verifyToken, isAdmin } from '../middlewares/auntenticador';
 
 const router = Router();
 
 //obtener todos
-router.get('/usuario', usuariosController.getUsers);
+router.get('/usuario', [verifyToken, isAdmin], usuariosController.getUsers);
 //obtener uno por id
-router.get('/usuario/:id', usuariosController.getUser);
+router.get('/usuario/:id', [verifyToken, isAdmin], usuariosController.getUser);
 
 //agregar
-router.post('/usuario', usuariosController.addUser);
+router.post('/usuario', [verifyToken, isAdmin], usuariosController.addUser);
 
 //editar
-router.put('/usuario/:id', usuariosController.editUser);
+router.put('/usuario/:id', [verifyToken, isAdmin], usuariosController.editUser);
 //eliminar
-router.delete('/usuario/:id', usuariosController.deleteUser);
+router.delete('/usuario/:id', [verifyToken, isAdmin], usuariosController.deleteUser);
 
 export default router;
