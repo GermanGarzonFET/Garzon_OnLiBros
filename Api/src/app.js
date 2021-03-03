@@ -47,6 +47,7 @@ import generosRouter from './routes/generos.route';
 import comentariosRouter from './routes/comentarios.route';
 import usuariosRouter from './routes/usuarios.route';
 import loginController from './routes/login.route';
+import bibliotecaRouter from './routes/biblioteca.route';
 
 
 
@@ -57,6 +58,7 @@ app.use('/api', generosRouter);
 app.use('/api', comentariosRouter);
 app.use('/api', usuariosRouter);
 app.use('/api', loginController);
+app.use('/api/biblioteca', bibliotecaRouter);
 
 
 //libs
